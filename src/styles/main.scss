@@ -1,0 +1,7 @@
+@import './_reset';
+@import './_variables';
+@import './global';
+
+.App {
+  background-color: var(--bg-color);
+}
