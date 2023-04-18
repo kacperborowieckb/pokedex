@@ -1,0 +1,60 @@
+.card {
+  width: 250px;
+  min-height: 260px;
+  display: grid;
+  place-content: center;
+  border-radius: 10px;
+  padding: 1rem;
+  background: rgba(33, 33, 33, 0.55);
+  box-shadow: 0px 0px 5px 2px #444444;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(74, 74, 74, 0.12);
+  position: relative;
+  transition: transform 0.4s;
+  color: var(--font-color);
+  --fs-name: 1.6rem;
+  --fs-type: 1rem;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:hover > &__img-container > &__img {
+    transform: scale(1.1);
+  }
+
+  & &__id {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-weight: var(--fw-medium);
+  }
+
+  & &__img-container {
+    height: 150px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  & &__img {
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    width: 100%;
+    transition: transform 0.4s;
+  }
+
+  & &__name {
+    text-align: center;
+    font-size: var(--fs-name);
+    font-weight: var(--fw-bold);
+  }
+
+  & &__type {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: var(--fs-type);
+    font-weight: var(--fw-bold);
+  }
+}
