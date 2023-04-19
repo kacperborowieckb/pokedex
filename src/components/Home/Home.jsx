@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from '../Card/Card';
 import Nav from '../Nav/Nav';
+import PageNav from '../PageNav/PageNav';
 import './home.scss';
 import '../../styles/main.scss';
 
 const Home = ({ pokemons, setPokemons, typeColors }) => {
-  const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+  const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=150';
   const [itemsPerSide, setItemsPerSide] = useState(25);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     const fetchSinglePokemon = async (url) => {
@@ -40,14 +41,20 @@ const Home = ({ pokemons, setPokemons, typeColors }) => {
   return (
     <>
       <Nav pokemons={pokemons} typeColors={typeColors} />
-
       <main className="home">
-        {pokemons
-
-          .slice(itemsPerSide * currentPage, itemsPerSide * (currentPage + 1))
-          .map((pokemon, i) => (
-            <Card key={i} pokemon={pokemon} typeColors={typeColors} />
-          ))}
+        <section className="home__pokemons">
+          {pokemons
+            .slice(itemsPerSide * (currentPage - 1), itemsPerSide * currentPage)
+            .map((pokemon, i) => (
+              <Card key={i} pokemon={pokemon} typeColors={typeColors} />
+            ))}
+        </section>
+        <PageNav
+          pokemons={pokemons}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          itemsPerSide={itemsPerSide}
+        />
       </main>
     </>
   );

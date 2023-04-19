@@ -1,7 +1,7 @@
 import '../../styles/main.scss';
 import SearchResult from '../SearchResult/SearchResult';
 import './nav.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Nav = ({ pokemons, typeColors }) => {
   const [search, setSearch] = useState('');

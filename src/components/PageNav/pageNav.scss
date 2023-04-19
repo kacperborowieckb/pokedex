@@ -1,0 +1,49 @@
+.page-nav {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0rem;
+
+  & &__label {
+    position: absolute;
+    left: -9999px;
+  }
+
+  & &__button {
+    background-color: transparent;
+    color: var(--color-font);
+    border: none;
+    font-size: 1.5rem;
+  }
+
+  & &__button:hover {
+    cursor: pointer;
+  }
+
+  & &__button:disabled {
+    cursor: auto;
+    opacity: 0.2;
+  }
+
+  & &__input {
+    width: 15px;
+    font-size: 1.2rem;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--color-font);
+    text-align: center;
+  }
+
+  & span {
+    font-size: 1.2rem;
+  }
+
+  & &__span {
+    margin: 0px 5px;
+  }
+
+  & &__max-pages {
+    width: 15px;
+    text-align: center;
+  }
+}

@@ -1,11 +1,12 @@
-@import '../../styles/variables';
-
 .home {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
   max-width: 1440px;
   margin: 0 auto;
-  gap: 2rem;
   padding: 0rem 1.5rem;
+
+  & &__pokemons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
 }
