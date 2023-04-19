@@ -1,3 +1,4 @@
+@import '../../styles/variables';
 .card {
   width: 250px;
   min-height: 260px;
@@ -5,10 +6,10 @@
   place-content: center;
   border-radius: 10px;
   padding: 1rem;
-  background: rgba(33, 33, 33, 0.55);
+  background: var(--bg-second-color-card);
   box-shadow: 0px 0px 5px 2px #444444;
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(74, 74, 74, 0.12);
+  border: var(--border);
   position: relative;
   transition: transform 0.4s;
   color: var(--font-color);

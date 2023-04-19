@@ -1,3 +1,6 @@
+import '../../styles/main.scss';
+import './footer.scss';
+
 const Footer = () => {
   return <div>Footer</div>;
 };

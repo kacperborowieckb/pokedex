@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from '../Card/Card';
 import './home.scss';
+import '../../styles/main.scss';
 
-const Home = () => {
+const Home = ({ pokemons, setPokemons }) => {
   const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
-  const [pokemons, setPokemons] = useState([]);
   const [itemsPerSide, setItemsPerSide] = useState(25);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -39,6 +39,7 @@ const Home = () => {
   return (
     <main className="home">
       {pokemons
+
         .slice(itemsPerSide * currentPage, itemsPerSide * (currentPage + 1))
         .map((pokemon, i) => (
           <Card key={i} pokemon={pokemon} />

@@ -2,12 +2,13 @@ import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Nav from '../Nav/Nav';
+import '../../styles/main.scss';
 
-const Layout = () => {
+const Layout = ({ pokemons }) => {
   return (
     <div className="App">
       <Header />
-      <Nav />
+      <Nav pokemons={pokemons} />
       <Outlet />
       <Footer />
     </div>

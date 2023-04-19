@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+
+.search-result {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  text-decoration: none;
+  color: var(--font-color);
+  padding: 0rem 1rem;
+  border-radius: var(--nav-border-radius);
+  --fs-id: 1rem;
+  --fs-name: 1.5rem;
+  --fs-type: 1rem;
+  border: 2px solid transparent;
+
+  &:hover {
+    border-color: var(--font-color);
+    border-style: dashed;
+  }
+
+  & &__id {
+    font-size: var(--fs-id);
+  }
+
+  & &__img-container {
+    height: var(--result-height);
+    aspect-ratio: 1/1;
+  }
+
+  & &__img {
+    transition: transform 0.4s;
+  }
+
+  & &__name {
+    font-size: var(--fs-name);
+    flex-grow: 1;
+  }
+
+  & &__type {
+    font-size: var(--fs-type);
+    text-align: right;
+  }
+
+  @media (max-width: 580px) {
+    --fs-id: 0.8rem;
+    --fs-name: 1rem;
+    --fs-type: 0.8rem;
+    gap: 0.6rem;
+  }
+}
