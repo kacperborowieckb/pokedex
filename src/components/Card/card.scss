@@ -53,9 +53,18 @@
   }
 
   & &__type {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
     margin-top: 0.5rem;
     text-align: center;
     font-size: var(--fs-type);
     font-weight: var(--fw-bold);
+  }
+
+  & &__type-box {
+    padding: 0rem 0.25rem;
+    border-radius: 6px;
+    text-shadow: 0px 0px 4px black;
   }
 }

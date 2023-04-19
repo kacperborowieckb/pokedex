@@ -1,9 +1,9 @@
 import '../../styles/main.scss';
 import SearchResult from '../SearchResult/SearchResult';
 import './nav.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const Nav = ({ pokemons }) => {
+const Nav = ({ pokemons, typeColors }) => {
   const [search, setSearch] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -31,6 +31,7 @@ const Nav = ({ pokemons }) => {
           className="nav__search-input"
           type="text"
           placeholder="Search for Pokemon"
+          autoComplete="off"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
@@ -43,7 +44,12 @@ const Nav = ({ pokemons }) => {
         <div className="nav__results">
           {searchResult.length > 0 ? (
             searchResult.map((pokemon, i) => (
-              <SearchResult pokemon={pokemon} key={i} setSearch={setSearch} />
+              <SearchResult
+                pokemon={pokemon}
+                key={i}
+                setSearch={setSearch}
+                typeColors={typeColors}
+              />
             ))
           ) : (
             <p className="nav__no-results">No results..</p>

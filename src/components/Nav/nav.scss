@@ -47,7 +47,7 @@
     background-color: var(--bg-second-color);
     border-bottom-right-radius: var(--nav-border-radius);
     border-bottom-left-radius: var(--nav-border-radius);
-    max-height: calc(((var(--result-height) + 4px) * 6) + var(--padding-top));
+    max-height: calc(((var(--result-height) + 4px) * 5) + var(--padding-top));
     overflow-y: scroll;
   }
 
@@ -63,9 +63,9 @@
 
   @media (max-width: 580px) {
     --result-height: 76px;
-    --fs-id: 0.8rem;
-    --fs-name: 1rem;
-    --fs-type: 0.8rem;
-    gap: 0.6rem;
+  }
+
+  @media (max-width: 450px) {
+    --result-height: 62px;
   }
 }

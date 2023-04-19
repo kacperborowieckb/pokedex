@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from '../Card/Card';
+import Nav from '../Nav/Nav';
 import './home.scss';
 import '../../styles/main.scss';
 
-const Home = ({ pokemons, setPokemons }) => {
+const Home = ({ pokemons, setPokemons, typeColors }) => {
   const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=151';
   const [itemsPerSide, setItemsPerSide] = useState(25);
   const [currentPage, setCurrentPage] = useState(0);
@@ -37,14 +38,18 @@ const Home = ({ pokemons, setPokemons }) => {
   }, []);
 
   return (
-    <main className="home">
-      {pokemons
+    <>
+      <Nav pokemons={pokemons} typeColors={typeColors} />
 
-        .slice(itemsPerSide * currentPage, itemsPerSide * (currentPage + 1))
-        .map((pokemon, i) => (
-          <Card key={i} pokemon={pokemon} />
-        ))}
-    </main>
+      <main className="home">
+        {pokemons
+
+          .slice(itemsPerSide * currentPage, itemsPerSide * (currentPage + 1))
+          .map((pokemon, i) => (
+            <Card key={i} pokemon={pokemon} typeColors={typeColors} />
+          ))}
+      </main>
+    </>
   );
 };
 
