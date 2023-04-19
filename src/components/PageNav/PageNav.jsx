@@ -7,10 +7,14 @@ const PageNav = ({ pokemons, currentPage, setCurrentPage, itemsPerSide }) => {
   const [inputValue, setInputValue] = useState(currentPage);
 
   const handleChange = (value) => {
-    if (value === '') setInputValue(value);
-    if (value >= 1 && value <= maxPage) {
-      setCurrentPage(value);
+    if (value === '') {
       setInputValue(value);
+      return;
+    }
+    let page = Number(value);
+    if (page >= 1 && page <= maxPage) {
+      setCurrentPage(page);
+      setInputValue(page);
     }
   };
 
