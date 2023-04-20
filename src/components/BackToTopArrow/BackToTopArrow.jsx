@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 const BackToTopArrow = () => {
   const [animation, setAnimation] = useState('');
+  const [animateBack, setAnimateBack] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -13,10 +14,13 @@ const BackToTopArrow = () => {
   };
 
   const handleScroll = () => {
-    if (window.scrollY < 50) {
-      setAnimation('animate-back');
-    } else {
+    if (window.scrollY > 50) {
       setAnimation('animate');
+      setAnimateBack(true);
+    } else {
+      if (animateBack) {
+        setAnimation('animate-back');
+      }
     }
   };
 
