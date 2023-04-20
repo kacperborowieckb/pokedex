@@ -1,5 +1,6 @@
 .back-to-top-arrow {
   --box-shadow-color: hsl(0, 0%, 30%);
+  --right-slide-out: -5%;
   position: fixed;
   bottom: 3rem;
   background-color: var(--bg-second-color);
@@ -20,7 +21,7 @@
 
   @keyframes slidein {
     0% {
-      right: -5%;
+      right: var(--right-slide-out);
       transform: translateY(0%) rotate(270deg);
     }
     50% {
@@ -47,8 +48,19 @@
       transform: rotate(90deg);
     }
     100% {
-      right: -5%;
+      right: var(--right-slide-out);
       transform: rotate(0deg);
     }
+  }
+  @media (max-width: 1200px) {
+    --right-slide-out: -10%;
+  }
+
+  @media (max-width: 800px) {
+    --right-slide-out: -15%;
+  }
+
+  @media (max-width: 550px) {
+    --right-slide-out: -20%;
   }
 }
