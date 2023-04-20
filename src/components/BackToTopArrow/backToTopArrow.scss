@@ -15,7 +15,7 @@
   }
 
   &.animate-back {
-    animation: slideout 0.8s;
+    animation: slideout 0.8s forwards;
   }
 
   @keyframes slidein {
