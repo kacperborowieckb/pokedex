@@ -21,7 +21,7 @@ const Nav = ({ pokemons, typeColors }) => {
           : true)
     );
     setSearchResult(filteredPokemons);
-  }, [search, selectedType]);
+  }, [isFocused, search, selectedType]);
 
   useEffect(() => {
     document.addEventListener('click', (e) => handleUnFocus(e));
@@ -29,6 +29,9 @@ const Nav = ({ pokemons, typeColors }) => {
   }, []);
 
   const handleUnFocus = (e) => {
+    if (e.target.tagName === 'svg' || e.target.tagName === 'path') {
+      return;
+    }
     if (!e.target.className.includes('nav') || e.target.className === 'nav') {
       setIsFocused(false);
     }
@@ -56,6 +59,13 @@ const Nav = ({ pokemons, typeColors }) => {
             setSelectedType(type ? type.value : '');
           }}
           onFocus={() => setIsFocused(true)}
+          theme={(theme) => ({
+            ...theme,
+            colors: {
+              ...theme.colors,
+              primary50: 'transparent',
+            },
+          })}
         />
         <label htmlFor="search-pokemon" className="nav__label">
           Search for Pokemon
