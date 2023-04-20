@@ -1,1 +1,28 @@
+.footer {
+  width: 100%;
+  padding: 1.5rem 0rem;
+  display: grid;
+  place-content: center;
 
+  & &__list {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  & &__list-item {
+    list-style: none;
+    transition: transform 0.5s;
+    text-underline-offset: 3px;
+  }
+
+  & &__list-item > a {
+    color: var(--font-color);
+  }
+
+  & &__list-item:hover {
+    transform: rotate(5deg) scale(1.1);
+  }
+}

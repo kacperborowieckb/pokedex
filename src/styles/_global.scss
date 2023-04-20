@@ -3,6 +3,11 @@
 body {
   font-family: 'Open Sans', sans-serif;
   color: var(--font-color);
+  background: linear-gradient(
+    var(--bg-second-color),
+    var(--bg-color) 20% 90%,
+    var(--bg-second-color)
+  );
 }
 
 .App {
