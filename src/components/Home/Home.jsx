@@ -10,7 +10,7 @@ import '../../styles/main.scss';
 
 const Home = ({ pokemons, setPokemons, typeColors }) => {
   const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=150';
-  const [itemsPerSide, setItemsPerSide] = useState(25);
+  const [itemsPerPage, setItemsPerPage] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,23 +44,28 @@ const Home = ({ pokemons, setPokemons, typeColors }) => {
 
   return (
     <>
-      <Nav pokemons={pokemons} typeColors={typeColors} />
+      <Nav
+        pokemons={pokemons}
+        typeColors={typeColors}
+        setItemsPerPage={setItemsPerPage}
+        setCurrentPage={setCurrentPage}
+      />
       <main className="home">
         <section className="home__pokemons">
           {isLoading &&
-            Array(itemsPerSide)
+            Array(itemsPerPage)
               .fill(null)
               .map((item, i) => <SkeletonCard key={i} />)}
           {!isLoading &&
             pokemons
-              .slice(itemsPerSide * (currentPage - 1), itemsPerSide * currentPage)
+              .slice(itemsPerPage * (currentPage - 1), itemsPerPage * currentPage)
               .map((pokemon, i) => <Card key={i} pokemon={pokemon} typeColors={typeColors} />)}
         </section>
         <PageNav
           pokemons={pokemons}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
-          itemsPerSide={itemsPerSide}
+          itemsPerPage={itemsPerPage}
           isLoading={isLoading}
         />
         <BackToTopArrow />

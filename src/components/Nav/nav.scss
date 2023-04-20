@@ -14,6 +14,12 @@
     z-index: 2;
   }
 
+  & &__top-section {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
   & &__label {
     position: absolute;
     left: -9999px;
@@ -30,8 +36,8 @@
     color: var(--color-font);
   }
 
-  & &__select-container {
-    margin-bottom: 1rem;
+  & &__select-container:nth-child(1) {
+    flex-grow: 1;
   }
 
   & &__control {
