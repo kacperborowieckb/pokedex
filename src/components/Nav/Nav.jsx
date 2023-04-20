@@ -2,18 +2,37 @@ import '../../styles/main.scss';
 import SearchResult from '../SearchResult/SearchResult';
 import './nav.scss';
 import { useEffect, useRef, useState } from 'react';
+import Select from 'react-select';
 
 const Nav = ({ pokemons, typeColors }) => {
   const [search, setSearch] = useState('');
+  const [selectedType, setSelectedType] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    const filteredPokemons = pokemons.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(search.toLowerCase())
+    const filteredPokemons = pokemons.filter(
+      (pokemon) =>
+        pokemon.name.toLowerCase().includes(search.toLowerCase()) &&
+        (selectedType.length > 0
+          ? pokemon.types.some(
+              (type) => type.type.name.toLowerCase() === selectedType.toLowerCase()
+            )
+          : true)
     );
     setSearchResult(filteredPokemons);
-  }, [search]);
+  }, [search, selectedType]);
+
+  useEffect(() => {
+    document.addEventListener('click', (e) => handleUnFocus(e));
+    return () => document.removeEventListener('click', (e) => handleUnFocus(e));
+  }, []);
+
+  const handleUnFocus = (e) => {
+    if (!e.target.className.includes('nav') || e.target.className === 'nav') {
+      setIsFocused(false);
+    }
+  };
 
   return (
     <nav className="nav">
@@ -23,6 +42,21 @@ const Nav = ({ pokemons, typeColors }) => {
           e.preventDefault();
         }}
       >
+        <Select
+          className="nav__select-container"
+          classNamePrefix="nav"
+          options={Object.keys(typeColors).map((item) => ({
+            value: item,
+            label: item.charAt(0).toUpperCase() + item.slice(1),
+          }))}
+          isClearable={true}
+          defaultValue={''}
+          placeholder="Select type"
+          onChange={(type) => {
+            setSelectedType(type ? type.value : '');
+          }}
+          onFocus={() => setIsFocused(true)}
+        />
         <label htmlFor="search-pokemon" className="nav__label">
           Search for Pokemon
         </label>
@@ -37,10 +71,9 @@ const Nav = ({ pokemons, typeColors }) => {
             setSearch(e.target.value);
           }}
           onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
         />
       </form>
-      {search.length > 0 && isFocused && (
+      {isFocused && (
         <div className="nav__results">
           {searchResult.length > 0 ? (
             searchResult.map((pokemon, i) => (

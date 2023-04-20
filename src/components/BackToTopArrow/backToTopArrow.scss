@@ -2,6 +2,7 @@
   --box-shadow-color: hsl(0, 0%, 30%);
   --right-slide-out: -5%;
   position: fixed;
+  right: var(--right-slide-out);
   bottom: 3rem;
   background-color: var(--bg-second-color);
   border: none;

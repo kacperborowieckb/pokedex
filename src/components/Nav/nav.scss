@@ -21,7 +21,6 @@
 
   & &__search-input {
     background: var(--bg-second-color);
-    border: var(--border);
     border: none;
     outline: none;
     border-radius: var(--nav-border-radius);
@@ -31,12 +30,42 @@
     color: var(--color-font);
   }
 
+  & &__select-container {
+    margin-bottom: 1rem;
+  }
+
+  & &__control {
+    background-color: var(--bg-second-color);
+    border: none;
+    border-radius: var(--nav-border-radius);
+    box-shadow: 0px 0px 16px 2px var(--bg-color);
+  }
+
+  & &__single-value {
+    color: var(--color-font);
+  }
+
+  & &__menu {
+    background-color: var(--bg-second-color);
+    color: var(--color-font);
+  }
+
+  & &__indicator-separator {
+    display: none;
+  }
+
+  & &__option--is-focused,
+  & &__option--is-selected {
+    background-color: var(--bg-second-color);
+    filter: brightness(1.2);
+  }
+
   & &__results {
     --padding-top: 32px;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 50%;
+    top: 60%;
     width: 80%;
     min-width: 260px;
     max-width: 600px;
