@@ -5,11 +5,13 @@ import Nav from '../Nav/Nav';
 import PageNav from '../PageNav/PageNav';
 import './home.scss';
 import '../../styles/main.scss';
+import SkeletonCard from '../SkeletorCard/SkeletonCard';
 
 const Home = ({ pokemons, setPokemons, typeColors }) => {
   const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=150';
   const [itemsPerSide, setItemsPerSide] = useState(25);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchSinglePokemon = async (url) => {
@@ -30,6 +32,7 @@ const Home = ({ pokemons, setPokemons, typeColors }) => {
           pokemons.push(pokemonData);
         }
         setPokemons(pokemons);
+        setIsLoading(false);
       } catch (err) {
         console.log(`Error: ${err.message}`);
       }
@@ -43,17 +46,21 @@ const Home = ({ pokemons, setPokemons, typeColors }) => {
       <Nav pokemons={pokemons} typeColors={typeColors} />
       <main className="home">
         <section className="home__pokemons">
-          {pokemons
-            .slice(itemsPerSide * (currentPage - 1), itemsPerSide * currentPage)
-            .map((pokemon, i) => (
-              <Card key={i} pokemon={pokemon} typeColors={typeColors} />
-            ))}
+          {isLoading &&
+            Array(itemsPerSide)
+              .fill(null)
+              .map((item, i) => <SkeletonCard key={i} />)}
+          {!isLoading &&
+            pokemons
+              .slice(itemsPerSide * (currentPage - 1), itemsPerSide * currentPage)
+              .map((pokemon, i) => <Card key={i} pokemon={pokemon} typeColors={typeColors} />)}
         </section>
         <PageNav
           pokemons={pokemons}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           itemsPerSide={itemsPerSide}
+          isLoading={isLoading}
         />
       </main>
     </>

@@ -1,0 +1,43 @@
+.skeletonCard {
+  --skeleton-loading-bg-first: hsla(0, 0%, 100%, 0.5);
+  --skeleton-loading-bg-second: hsla(0, 0%, 100%, 0.3);
+
+  & *:not(.skeletonCard__img-container) {
+    background: linear-gradient(
+      90deg,
+      var(--skeleton-loading-bg-first),
+      var(--skeleton-loading-bg-second),
+      var(--skeleton-loading-bg-first)
+    );
+    background-size: 200%;
+    animation: skeleton-animation 1s ease-in infinite;
+    height: 20px;
+  }
+
+  & &__id {
+    width: 40px;
+  }
+
+  & &__img-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & &__img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+  }
+
+  @keyframes skeleton-animation {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 200% 0%;
+    }
+  }
+}

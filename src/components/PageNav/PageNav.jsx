@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import './pageNav.scss';
 
-const PageNav = ({ pokemons, currentPage, setCurrentPage, itemsPerSide }) => {
+const PageNav = ({ pokemons, currentPage, setCurrentPage, itemsPerSide, isLoading }) => {
   const maxPage = Math.floor(pokemons.length / itemsPerSide);
   const [inputValue, setInputValue] = useState(currentPage);
 
@@ -23,7 +23,7 @@ const PageNav = ({ pokemons, currentPage, setCurrentPage, itemsPerSide }) => {
       <button
         className="page-nav__button"
         onClick={() => handleChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        disabled={currentPage === 1 || isLoading}
       >
         <FaAngleLeft />
       </button>
@@ -39,11 +39,11 @@ const PageNav = ({ pokemons, currentPage, setCurrentPage, itemsPerSide }) => {
         onBlur={() => setInputValue(currentPage)}
       />
       <span className="page-nav__span">/</span>
-      <span className="page-nav__max-pages">{maxPage}</span>
+      <span className="page-nav__max-pages">{isLoading ? 1 : maxPage}</span>
       <button
         className="page-nav__button"
         onClick={() => handleChange(currentPage + 1)}
-        disabled={currentPage === maxPage}
+        disabled={currentPage === maxPage || isLoading}
       >
         <FaAngleRight />
       </button>
