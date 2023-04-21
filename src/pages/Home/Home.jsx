@@ -27,11 +27,11 @@ const Home = ({ pokemons, setPokemons, typeColors, MAX_POKEMONS }) => {
     const fetchPokemons = async () => {
       try {
         const response = await axios.get(API_URL);
-        const pokemons = [];
+        const pokemonsPromises = [];
         for (let item of response.data.results) {
-          const pokemonData = await fetchSinglePokemon(item.url);
-          pokemons.push(pokemonData);
+          pokemonsPromises.push(fetchSinglePokemon(item.url));
         }
+        const pokemons = await Promise.all(pokemonsPromises);
         setPokemons(pokemons);
         setIsLoading(false);
       } catch (err) {
