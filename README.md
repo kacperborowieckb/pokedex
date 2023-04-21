@@ -1,3 +1,3 @@
 # pokedex
 
-https://luxury-tanuki-eb2b18.netlify.app/
+https://zippy-lily-752b24.netlify.app
