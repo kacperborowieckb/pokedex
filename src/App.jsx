@@ -4,6 +4,7 @@ import Layout from './components/Layout/Layout';
 import './styles/main.scss';
 import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
+import Missing from './pages/Missing/Missing';
 
 function App() {
   const MAX_POKEMONS = 150;
@@ -44,12 +45,13 @@ function App() {
             />
           }
         />
-        <Route path=":pokemon">
+        <Route path="/pokemon/:pokemon">
           <Route
             index
             element={<PokemonSite typeColors={typeColors} MAX_POKEMONS={MAX_POKEMONS} />}
           />
         </Route>
+        <Route index path="*" element={<Missing />} />
       </Route>
     </Routes>
   );

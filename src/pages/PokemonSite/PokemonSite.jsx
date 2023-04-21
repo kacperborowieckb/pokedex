@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import '../../styles/main.scss';
 import './pokemonSite.scss';
 import { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ const PokemonSite = ({ typeColors, MAX_POKEMONS }) => {
   const [pokemon, setPokemon] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nextPokemons, setNextPokemons] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const API_URL = 'https://pokeapi.co/api/v2/pokemon/';
@@ -32,6 +33,7 @@ const PokemonSite = ({ typeColors, MAX_POKEMONS }) => {
         setNextPokemons([previousPokemon.data.name, nextPokemon.data.name]);
       } catch (err) {
         console.log(`Error: ${err.message}`);
+        navigate('/missing');
       }
     };
 
@@ -41,13 +43,13 @@ const PokemonSite = ({ typeColors, MAX_POKEMONS }) => {
   return (
     <main className="pokemonSite">
       <section className="pokemonSite__top-section">
-        <Link to={`/${nextPokemons[0]}`}>
+        <Link to={`/pokemon/${nextPokemons[0]}`}>
           <button className="pokemonSite__button">
             <FaArrowLeft />
           </button>
         </Link>
         {isLoading ? <SkeletonCard /> : <Card pokemon={pokemon} typeColors={typeColors} />}
-        <Link to={`/${nextPokemons[1]}`}>
+        <Link to={`/pokemon/${nextPokemons[1]}`}>
           <button className="pokemonSite__button">
             <FaArrowRight />
           </button>
