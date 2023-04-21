@@ -7,7 +7,6 @@ import SkeletonCard from '../../components/SkeletorCard/SkeletonCard';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import axios from 'axios';
 import ItemList from '../../components/ItemList/ItemList';
-import SkeletonItemList from '../../components/SkeletonItemList/SkeletonItemList';
 
 const PokemonSite = ({ typeColors, MAX_POKEMONS }) => {
   let { pokemon: pokemonName } = useParams();
@@ -57,18 +56,20 @@ const PokemonSite = ({ typeColors, MAX_POKEMONS }) => {
       </section>
       <section className="pokemonSite__info-section">
         <section className="pokemonSite__core-info">
-          <ItemList
-            items={[
-              `Height: ${pokemon.height}`,
-              `Experience: ${pokemon.base_experience}`,
-              `Weight: ${pokemon.weight}`,
-            ]}
-            title={''}
-          />
+          {!isLoading && (
+            <ItemList
+              items={[
+                `Height: ${pokemon.height}`,
+                `Experience: ${pokemon.base_experience}`,
+                `Weight: ${pokemon.weight}`,
+              ]}
+              title={''}
+            />
+          )}
         </section>
         <section className="pokemonSite__detal-info">
           {isLoading ? (
-            <SkeletonItemList />
+            <img src="/loading.png" alt=""></img>
           ) : (
             <>
               <ItemList
