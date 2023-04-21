@@ -1,0 +1,16 @@
+.itemList {
+  list-style: none;
+  padding: 0;
+
+  &:before {
+    content: attr(aria-label);
+    font-size: var(--fs-ul-header);
+    margin-bottom: 1rem;
+    font-weight: var(--fw-bold);
+  }
+
+  & &__item {
+    font-size: var(--fs-li-smaller);
+    padding: 0.15rem;
+  }
+}

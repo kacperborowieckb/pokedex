@@ -6,6 +6,8 @@ import Card from '../../components/Card/Card';
 import SkeletonCard from '../../components/SkeletorCard/SkeletonCard';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import axios from 'axios';
+import ItemList from '../../components/ItemList/ItemList';
+import SkeletonItemList from '../../components/SkeletonItemList/SkeletonItemList';
 
 const PokemonSite = ({ typeColors, MAX_POKEMONS }) => {
   let { pokemon: pokemonName } = useParams();
@@ -52,6 +54,43 @@ const PokemonSite = ({ typeColors, MAX_POKEMONS }) => {
             <FaArrowRight />
           </button>
         </Link>
+      </section>
+      <section className="pokemonSite__info-section">
+        <section className="pokemonSite__core-info">
+          <ItemList
+            items={[
+              `Height: ${pokemon.height}`,
+              `Experience: ${pokemon.base_experience}`,
+              `Weight: ${pokemon.weight}`,
+            ]}
+            title={''}
+          />
+        </section>
+        <section className="pokemonSite__detal-info">
+          {isLoading ? (
+            <SkeletonItemList />
+          ) : (
+            <>
+              <ItemList
+                items={pokemon.stats.map(
+                  (stat) =>
+                    stat.stat.name.charAt(0).toUpperCase() +
+                    stat.stat.name.slice(1) +
+                    ': ' +
+                    stat.base_stat
+                )}
+                title={'Stats'}
+              />
+              <ItemList
+                items={pokemon.abilities.map(
+                  (ability) =>
+                    ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)
+                )}
+                title={'Abilities'}
+              />
+            </>
+          )}
+        </section>
       </section>
     </main>
   );

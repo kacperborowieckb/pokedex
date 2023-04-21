@@ -1,8 +1,11 @@
 .pokemonSite {
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  --fs-li-bigger: 2.5rem;
+  --fs-li-smaller: 1.25rem;
+  --fs-ul-header: 2.5rem;
 
   & &__top-section {
     display: flex;
@@ -20,5 +23,85 @@
     border: none;
     border-radius: 50%;
     box-shadow: 0px 0px 10px var(--box-shadow-color);
+  }
+
+  & &__info-section {
+    display: grid;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  & &__core-info ul {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    font-weight: var(--fw-bold);
+  }
+
+  & &__core-info ul:before {
+    display: none;
+  }
+
+  & &__core-info ul li {
+    font-size: var(--fs-li-bigger);
+    padding: 0;
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  & &__detal-info {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+  }
+
+  @media (max-width: 950px) {
+    --fs-li-bigger: 2rem;
+    --fs-li-smaller: 1.15rem;
+    --fs-ul-header: 2rem;
+  }
+
+  @media (max-width: 750px) {
+    --fs-li-bigger: 1.75rem;
+    --fs-ul-header: 1.75rem;
+  }
+
+  @media (max-width: 650px) {
+    & &__core-info ul {
+      flex-direction: column;
+      margin-top: 1.5rem;
+    }
+  }
+
+  @media (max-width: 460px) {
+    & &__top-section {
+      display: grid;
+      grid-template-areas:
+        'card card'
+        'arrow1 arrow2';
+      place-items: center;
+      gap: 2rem;
+      row-gap: 0.25rem;
+      & > *:nth-child(1) {
+        grid-area: arrow1;
+      }
+
+      & > *:nth-child(2) {
+        grid-area: card;
+      }
+
+      & > *:nth-child(3) {
+        grid-area: arrow2;
+      }
+    }
+
+    & &__detal-info {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
   }
 }
