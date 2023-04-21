@@ -4,7 +4,7 @@ import './searchResult.scss';
 
 const SearchResult = ({ pokemon, setSearch, typeColors }) => {
   return (
-    <Link to={`${pokemon.name}`} className="search-result" onClick={() => setSearch('')}>
+    <Link to={`/pokemon/${pokemon.name}`} className="search-result" onClick={() => setSearch('')}>
       <p className="search-result__id">#{pokemon.id.toString().padStart(3, '0')}</p>
       <div className="search-result__img-container">
         <img
