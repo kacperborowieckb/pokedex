@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import '../../styles/main.scss';
 import './pokemonSite.scss';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,6 @@ const PokemonSite = ({ typeColors, MAX_POKEMONS }) => {
   const [pokemon, setPokemon] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nextPokemons, setNextPokemons] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const API_URL = 'https://pokeapi.co/api/v2/pokemon/';
