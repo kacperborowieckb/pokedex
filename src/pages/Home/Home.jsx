@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Card from '../Card/Card';
-import Nav from '../Nav/Nav';
-import SkeletonCard from '../SkeletorCard/SkeletonCard';
-import BackToTopArrow from '../BackToTopArrow/BackToTopArrow';
-import PageNav from '../PageNav/PageNav';
+import Card from '../../components/Card/Card';
+import Nav from '../../components/Nav/Nav';
+import SkeletonCard from '../../components/SkeletorCard/SkeletonCard';
+import BackToTopArrow from '../../components/BackToTopArrow/BackToTopArrow';
+import PageNav from '../../components/PageNav/PageNav';
 import './home.scss';
 import '../../styles/main.scss';
 

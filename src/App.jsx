@@ -1,5 +1,5 @@
-import Home from './components/Home/Home';
-import PokemonSite from './components/PokemonSite/PokemonSite';
+import Home from './pages/Home/Home';
+import PokemonSite from './pages/PokemonSite/PokemonSite';
 import Layout from './components/Layout/Layout';
 import './styles/main.scss';
 import { Route, Routes } from 'react-router-dom';
@@ -36,7 +36,7 @@ function App() {
           element={<Home pokemons={pokemons} setPokemons={setPokemons} typeColors={typeColors} />}
         />
         <Route path=":pokemon">
-          <Route index element={<PokemonSite />} />
+          <Route index element={<PokemonSite pokemons={pokemons} />} />
         </Route>
       </Route>
     </Routes>
