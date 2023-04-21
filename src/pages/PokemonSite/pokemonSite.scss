@@ -1,1 +1,24 @@
+.pokemonSite {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  & &__top-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  & &__button {
+    margin-top: 1.5rem;
+    cursor: pointer;
+    background-color: var(--bg-second-color);
+    font-size: 1.5rem;
+    color: var(--font-color);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px var(--box-shadow-color);
+  }
+}

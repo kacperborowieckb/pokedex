@@ -6,7 +6,9 @@ import { Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
+  const MAX_POKEMONS = 150;
   const [pokemons, setPokemons] = useState([]);
+
   const typeColors = {
     fire: '#EE8130',
     grass: '#7AC74C',
@@ -33,10 +35,20 @@ function App() {
       <Route path="/" element={<Layout pokemons={pokemons} typeColors={typeColors} />}>
         <Route
           index
-          element={<Home pokemons={pokemons} setPokemons={setPokemons} typeColors={typeColors} />}
+          element={
+            <Home
+              pokemons={pokemons}
+              setPokemons={setPokemons}
+              typeColors={typeColors}
+              MAX_POKEMONS={MAX_POKEMONS}
+            />
+          }
         />
         <Route path=":pokemon">
-          <Route index element={<PokemonSite pokemons={pokemons} />} />
+          <Route
+            index
+            element={<PokemonSite typeColors={typeColors} MAX_POKEMONS={MAX_POKEMONS} />}
+          />
         </Route>
       </Route>
     </Routes>

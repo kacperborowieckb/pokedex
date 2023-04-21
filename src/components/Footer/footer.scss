@@ -3,6 +3,8 @@
   padding: 1.5rem 0rem;
   display: grid;
   place-content: center;
+  position: sticky;
+  top: 100%;
 
   & &__list {
     display: flex;

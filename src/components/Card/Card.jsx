@@ -3,7 +3,7 @@ import './card.scss';
 
 const Card = ({ pokemon, typeColors }) => {
   return (
-    <Link to={`${pokemon.name}`} style={{ textDecoration: 'none' }}>
+    <Link to={`/${pokemon.name}`} style={{ textDecoration: 'none' }}>
       <div className="card">
         <p className="card__id">#{pokemon.id.toString().padStart(3, '0')}</p>
         <div className="card__img-container">

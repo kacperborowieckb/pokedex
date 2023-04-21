@@ -8,8 +8,8 @@ import PageNav from '../../components/PageNav/PageNav';
 import './home.scss';
 import '../../styles/main.scss';
 
-const Home = ({ pokemons, setPokemons, typeColors }) => {
-  const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=150';
+const Home = ({ pokemons, setPokemons, typeColors, MAX_POKEMONS }) => {
+  const API_URL = `https://pokeapi.co/api/v2/pokemon?limit=${MAX_POKEMONS}`;
   const [itemsPerPage, setItemsPerPage] = useState(20);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
