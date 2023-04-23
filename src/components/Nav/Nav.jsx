@@ -51,7 +51,7 @@ const Nav = ({ pokemons, typeColors, setItemsPerPage, setCurrentPage }) => {
           e.preventDefault();
         }}
       >
-        <div className="nav__top-section">
+        <section className="nav__top-section">
           <Select
             className="nav__select-container"
             classNamePrefix="nav"
@@ -84,7 +84,7 @@ const Nav = ({ pokemons, typeColors, setItemsPerPage, setCurrentPage }) => {
               setCurrentPage(1);
             }}
           />
-        </div>
+        </section>
         <label htmlFor="search-pokemon" className="nav__label">
           Search for Pokemon
         </label>
@@ -102,7 +102,7 @@ const Nav = ({ pokemons, typeColors, setItemsPerPage, setCurrentPage }) => {
         />
       </form>
       {isFocused && (
-        <div className="nav__results">
+        <section className="nav__results">
           {searchResult.length > 0 ? (
             searchResult.map((pokemon, i) => (
               <SearchResult
@@ -115,7 +115,7 @@ const Nav = ({ pokemons, typeColors, setItemsPerPage, setCurrentPage }) => {
           ) : (
             <p className="nav__no-results">No results..</p>
           )}
-        </div>
+        </section>
       )}
     </nav>
   );

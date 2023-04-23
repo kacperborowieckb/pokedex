@@ -1,8 +1,8 @@
 const Missing = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', fontSize: 40, marginTop: 60 }}>
+    <section style={{ display: 'flex', justifyContent: 'center', fontSize: 40, marginTop: 60 }}>
       Not Found
-    </div>
+    </section>
   );
 };
 

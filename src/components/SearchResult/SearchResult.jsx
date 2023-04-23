@@ -16,7 +16,7 @@ const SearchResult = ({ pokemon, setSearch, typeColors }) => {
       <h2 className="search-result__name">
         {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
       </h2>
-      <div className="search-result__type">
+      <section className="search-result__type">
         {pokemon.types.map((type, i) => {
           return (
             <p
@@ -28,7 +28,7 @@ const SearchResult = ({ pokemon, setSearch, typeColors }) => {
             </p>
           );
         })}
-      </div>
+      </section>
     </Link>
   );
 };
