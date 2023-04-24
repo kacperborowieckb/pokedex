@@ -1,7 +1,7 @@
 # Pokedex
 
 ## About the project
-Pokedex website that use PokeApi to get informations about pokemons. The main goal of the project was to become more familiar with developing React JS projects and learn how to read documentation of libraries that are new for me.
+Pokedex website that use PokeApi to get informations about pokemons. The main goal of this project was to become more familiar with developing React JS projects and learn how to read documentation of libraries that are unfamiliar to me.
 
 Live: https://zippy-lily-752b24.netlify.app
 
